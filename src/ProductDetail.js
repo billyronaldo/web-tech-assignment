@@ -7,6 +7,10 @@ const ProductDetail = ({ product, addToCart }) => {
     addToCart(product, quantity);
   };
 
+  if (!product) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div>
       <h2>{product.name}</h2>

@@ -70,7 +70,7 @@ const App = () => {
         <NavBar setPage={setPage} />
       </header>
       <main>
-        {page === 'productList' && <ProductList addToCart={addToCart} />}
+        {page === 'productList' && <ProductList addToCart={addToCart} setPage={setPage}/>}
         {page === 'productDetail' && <ProductDetail addToCart={addToCart} setPage={setPage} />}
         {page === 'cart' && <ShoppingCart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} clearCart={clearCart} />}
         {page === 'account' && <Account userInfo={userInfo} updateUserInfo={updateUserInfo} />}

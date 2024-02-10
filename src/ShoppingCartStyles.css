@@ -1,5 +1,5 @@
 .shopping-cart {
-    max-width: 600px;
+    max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     background-color: #fff;
@@ -12,42 +12,93 @@
     font-size: 24px;
 }
 
-.shopping-cart ul {
+.shopping-cart .no-items {
+    margin-top: 20px;
+}
+
+.shopping-cart .cart-items {
     list-style: none;
     padding: 0;
 }
 
-.shopping-cart li {
-    margin-bottom: 10px;
+.shopping-cart .cart-item {
+    margin-bottom: 20px;
     padding: 10px;
     background-color: #f8f9fa;
     border-radius: 5px;
     display: flex;
-    align-items: center; 
+    align-items: center;
 }
 
-.shopping-cart li:last-child {
-    margin-bottom: 0;
+.shopping-cart .cart-item img {
+    max-width: 150px; 
+    height: auto;
+    margin-right: 20px;
 }
 
-.shopping-cart button {
-    background-color: #36893c;
+.shopping-cart .item-details {
+    flex-grow: 1;
+}
+
+.shopping-cart .item-name {
+    color: #36893c;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.shopping-cart .item-price {
+    margin-bottom: 5px;
+}
+
+.shopping-cart .quantity-container {
+    margin-bottom: 5px;
+}
+
+.shopping-cart .quantity-container label {
+    margin-right: 10px;
+}
+
+.shopping-cart .total-price {
+    color: #36893c;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.shopping-cart .remove-button {
+    background-color: #dd3546; 
     border: none;
     border-radius: 5px;
     color: #fff;
     padding: 8px 16px;
     cursor: pointer;
     font-size: 14px;
+    margin-left: auto; 
 }
 
-.shopping-cart button:hover {
-    color: white;
-    background-color: #41b549;
+.shopping-cart .remove-button:hover {
+    background-color: #bb0013;
 }
 
-.shopping-cart li img {
-    max-width: 100px;
-    height: auto; 
-    margin-right: 10px; 
+.shopping-cart .buy-button {
+    background-color: #36893c; 
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 8px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-top: 10px;
 }
 
+.shopping-cart .buy-button:hover {
+    background-color: #41b549; 
+}
+
+.shopping-cart .success-popup {
+    background-color: #28a745; 
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+    text-align: center;
+}

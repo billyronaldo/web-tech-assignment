@@ -19,30 +19,35 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
     setShowSuccessPopup(true);
     setTimeout(() => setShowSuccessPopup(false), 1100);
   };
-  
 
   return (
     <div className='shopping-cart'> 
       <h2>Shopping Cart</h2>
       {cart.length === 0 ? (
-        <p>No items</p>
+        <p className="no-items">No items</p>
       ) : (
-        <ul>
+        <ul className="cart-items">
           {cart.map(item => (
-            <li key={item.id}>
+            <li key={item.id} className="cart-item">
               <img src={item.image} alt={item.name}/>
-              {item.name} - ${item.price} - Quantity: 
-              <input type="number" value={item.quantity} onChange={(e) => handleQuantityChange(item, e.target.value)} />
-              Total Price: ${item.price * item.quantity} 
-              <button onClick={() => removeFromCart(item)}>Remove</button>
+              <div className="item-details">
+                <p className="item-name">{item.name}</p>
+                <p className="item-price">${item.price}</p>
+                <div className="quantity-container">
+                  <label>Quantity:</label>
+                  <input type="number" value={item.quantity} onChange={(e) => handleQuantityChange(item, e.target.value)} />
+                </div>
+                <p className="total-price">Total Price: ${item.price * item.quantity}</p>
+                <button className="remove-button" onClick={() => removeFromCart(item)}>Remove</button>
+              </div>
             </li>
           ))}
         </ul>
       )}
       {cart.length > 0 && (
         <div>
-          <p>Total Price: ${getTotalPrice()}</p>
-          <button onClick={buyItems}>Buy</button>
+          <p className="total-price">Total Price: ${getTotalPrice()}</p>
+          <button className="buy-button" onClick={buyItems}>Buy</button>
         </div>
       )}
       {showSuccessPopup && <div className="success-popup">Purchase Successful!</div>}
