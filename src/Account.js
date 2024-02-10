@@ -1,29 +1,27 @@
-// Account.js
 import React, { useState } from 'react';
-import './AccountStyles.css';
+import AccountForm from './AccountForm';
 
 const Account = ({ userInfo, updateUserInfo }) => {
-  const [shippingAddress, setShippingAddress] = useState(userInfo.shippingAddress);
+  const [successMessage, setSuccessMessage] = useState('');
 
-  const handleAddressChange = (e) => {
-    setShippingAddress(e.target.value);
-  };
+  const handleSubmit = (newUserInfo) => {
+    updateUserInfo(newUserInfo);
+    setSuccessMessage('Account information updated successfully!');
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    updateUserInfo({ ...userInfo, shippingAddress });
+    setTimeout(() => setSuccessMessage(''), 1000);
   };
 
   return (
     <div>
       <h2>Account</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Shipping Address:
-          <input type="text" value={shippingAddress} onChange={handleAddressChange} />
-        </label>
-        <button type="submit">Save</button>
-      </form>
+      <div>
+        <h3>Account Information:</h3>
+        <p>Name: {userInfo.name}</p>
+        <p>Email: {userInfo.email}</p>
+        <p>Shipping Address: {userInfo.shippingAddress}</p>
+      </div>
+      <AccountForm onSubmit={handleSubmit} initialUserInfo={userInfo} />
+      {successMessage && <div className="success-message">{successMessage}</div>}
     </div>
   );
 };

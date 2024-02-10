@@ -73,24 +73,16 @@ nav ul li {
     }
 }
 
-@media only screen and (max-width: 959px) {
-    .main-container-grid {
-        grid-template-columns: 8fr 3fr;
-    }
-}
-
+/* add responsiveness to adjust screen size */
 @media only screen and (max-width: 767px) {
-    .tagline {
-        font-size: 20px;
-        text-align: center;
-        margin-bottom: 15px;
-    }
-
     header {
         grid-template-columns: 1fr;
     }
 
-    .main-container-grid {
-        grid-template-columns: 1fr;
+    nav ul li {
+        display: block;
+        margin: 10px 0;
     }
+
 }
+

@@ -34,7 +34,7 @@
     width: 100%;
     margin-top: 10px;
     padding: 10px;
-    background-color: #007bff;
+    background-color: #36893c;
     border: none;
     border-radius: 5px;
     color: #fff;
@@ -43,10 +43,24 @@
 }
 
 .product-item button:hover {
-    background-color: #0056b3;
+    color: white;
+    background-color: #41b549;
 }
 
 .product-item:hover {
     transform: scale(1.1);
     transition: transform 0.3s;
+}
+
+/* add responsiveness to adjust screen size */
+@media only screen and (max-width: 767px) {
+    .product-item {
+        width: calc(50% - 20px);
+    }
+}
+
+@media only screen and (max-width: 479px) {
+    .product-item {
+        width: calc(100% - 20px);
+    }
 }

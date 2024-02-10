@@ -1,35 +1,36 @@
-.account-info {
+.account-form {
     max-width: 400px;
     margin: 0 auto;
-}
-
-.account-info label {
+    padding: 20px;
+  }
+  
+  .account-form label {
     display: block;
     margin-bottom: 10px;
-    font-weight: bold;
-}
-
-.account-info input[type="text"] {
+  }
+  
+  .account-form input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-sizing: border-box;
-}
-
-.account-info button {
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #3d3c3c;
+    border-radius: 3px;
+  }
+  
+  .account-form button {
     display: block;
     width: 100%;
-    margin-top: 20px;
     padding: 10px;
-    background-color: #007bff;
-    border: none;
-    border-radius: 5px;
+    margin-top: 15px;
+    background-color: #36893c;
     color: #fff;
-    font-size: 16px;
+    border: none;
+    border-radius: 3px;
     cursor: pointer;
-}
-
-.account-info button:hover {
-    background-color: #0056b3;
-}
+  }
+  
+  .account-form button:hover {
+    color: white;
+    background-color: #41b549;
+  }
+  

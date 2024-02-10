@@ -3,17 +3,23 @@ import './ProductListStyles.css';
 import mouse from './assets/pexels-john-petalcurin-2115256.jpg';
 import rug from './assets/pexels-kelly-2950003.jpg';
 import wallet from './assets/pexels-lukas-915915.jpg';
+import airpod from './assets/pexels-dina-nasyrova-3825517.jpg';
+import flower from './assets/pexels-teona-swift-6912905.jpg';
+
 import './ProductListStyles.css';
 
-
-const ProductList = ({ addToCart }) => {
+const ProductList = ({ addToCart, setPage }) => {
   const products = [
-    { id: 1, name: 'Mouse', price: 10, image: mouse },
+    { id: 1, name: 'Flower Bucket', price: 50, image: flower },
     { id: 2, name: 'Rug', price: 15, image: rug },
-    { id: 1, name: 'Wallet', price: 10, image: wallet },
-    { id: 2, name: 'Product 4', price: 15, image: mouse },
-    { id: 1, name: 'Product 5', price: 10, image: rug },
+    { id: 3, name: 'Wallet', price: 20, image: wallet },
+    { id: 4, name: 'Airpod', price: 100, image: airpod },
+    { id: 5, name: 'Mouse', price: 10, image: mouse },
   ];
+
+  const viewProductDetail = (product) => {
+    setPage('productDetail', product);
+  };
 
   return (
     <div>
@@ -24,7 +30,8 @@ const ProductList = ({ addToCart }) => {
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
             <p>${product.price}</p>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
+            <button onClick={() => addToCart(product, 1)}>Add to Cart</button>
+            <button onClick={() => viewProductDetail(product)}>View Details</button>
           </div>
         ))}
       </div>

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ProductList from './ProductList';
 import ShoppingCart from './ShoppingCart';
 import Account from './Account';
+import ProductDetail from './ProductDetail';
 import './App.css';
 
 const NavBar = ({ setPage }) => (
@@ -55,7 +56,12 @@ const App = () => {
       return item;
     });
     setCart(updatedCart);
-  };  
+  };
+
+  const clearCart = () => {
+    setCart([]);
+  };
+  
 
   return (
     <div>
@@ -65,7 +71,8 @@ const App = () => {
       </header>
       <main>
         {page === 'productList' && <ProductList addToCart={addToCart} />}
-        {page === 'cart' && <ShoppingCart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />}
+        {page === 'productDetail' && <ProductDetail addToCart={addToCart} setPage={setPage} />}
+        {page === 'cart' && <ShoppingCart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} clearCart={clearCart} />}
         {page === 'account' && <Account userInfo={userInfo} updateUserInfo={updateUserInfo} />}
       </main>
     </div>
