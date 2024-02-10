@@ -22,6 +22,8 @@
     padding: 10px;
     background-color: #f8f9fa;
     border-radius: 5px;
+    display: flex;
+    align-items: center; 
 }
 
 .shopping-cart li:last-child {
@@ -41,3 +43,10 @@
 .shopping-cart button:hover {
     background-color: #0056b3;
 }
+
+.shopping-cart li img {
+    max-width: 100px;
+    height: auto; 
+    margin-right: 10px; 
+}
+

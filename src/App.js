@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import ProductList from './ProductList';
 import ShoppingCart from './ShoppingCart';
@@ -48,6 +47,16 @@ const App = () => {
     setUserInfo(newUserInfo);
   };
 
+  const updateQuantity = (product, quantity) => {
+    const updatedCart = cart.map(item => {
+      if (item.id === product.id) {
+        return { ...item, quantity: quantity };
+      }
+      return item;
+    });
+    setCart(updatedCart);
+  };  
+
   return (
     <div>
       <header>
@@ -56,7 +65,7 @@ const App = () => {
       </header>
       <main>
         {page === 'productList' && <ProductList addToCart={addToCart} />}
-        {page === 'cart' && <ShoppingCart cart={cart} removeFromCart={removeFromCart} />}
+        {page === 'cart' && <ShoppingCart cart={cart} removeFromCart={removeFromCart} updateQuantity={updateQuantity} />}
         {page === 'account' && <Account userInfo={userInfo} updateUserInfo={updateUserInfo} />}
       </main>
     </div>

@@ -1,4 +1,3 @@
-// ProductList.js
 import React from 'react';
 import './ProductListStyles.css';
 import mouse from './assets/pexels-john-petalcurin-2115256.jpg';
