@@ -4,14 +4,11 @@ import './ProductDetailStyles.css';
 const ProductDetail = ({ product, addToCart }) => {
   const [quantity, setQuantity] = useState(1);
 
-  const handleIncrement = () => {
-    setQuantity(prevQuantity => prevQuantity + 1);
-  };
-
-  const handleDecrement = () => {
-    if (quantity > 1) {
-      setQuantity(prevQuantity => prevQuantity - 1);
-    }
+  const onQtyChange = (amount) => {
+    setQuantity(prevQuantity => {
+      const newQuantity = prevQuantity + amount;
+      return newQuantity < 1 ? 1 : newQuantity;
+    });
   };
 
   const handleAddToCart = () => {
@@ -30,9 +27,9 @@ const ProductDetail = ({ product, addToCart }) => {
       <p className="product-description">{product.description}</p>
       <div className="quantity-container">
         <label className="quantity-label">Quantity:</label>
-        <button className="quantity-button" onClick={handleDecrement}>-</button>
+        <button onClick={() => onQtyChange(-1)}>-</button>
         <input className="quantity-input" type="number" min="1" value={quantity} onChange={(e) => setQuantity(parseInt(e.target.value))} />
-        <button className="quantity-button" onClick={handleIncrement}>+</button>
+        <button onClick={() => onQtyChange(1)}>+</button>
       </div>
       <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
     </div>

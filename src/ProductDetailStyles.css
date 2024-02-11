@@ -8,8 +8,10 @@
   }
   
   .product-detail h2 {
+    color: #36893c;
     margin-bottom: 20px;
     font-size: 24px;
+    font-weight: bold;
   }
   
   .product-detail img {
@@ -43,6 +45,7 @@
   }
   
   .product-detail button:hover {
+    color: white;
     background-color: #41b549;
   }
 
