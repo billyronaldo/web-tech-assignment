@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './AccountStyles.css';
+import FormField from './FormField';
 
 const AccountForm = ({ initialUserInfo, onSubmit }) => {
   const [formData, setFormData] = useState({
@@ -27,7 +28,6 @@ const AccountForm = ({ initialUserInfo, onSubmit }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSubmit(formData);
-    
 
     setFormData({
       name: '',
@@ -45,15 +45,14 @@ const AccountForm = ({ initialUserInfo, onSubmit }) => {
   return (
     <form className="account-form" onSubmit={handleSubmit}>
       {inputFields.map((field, index) => (
-        <label key={index}>
-          {field.label}:
-          <input 
-            type={field.type} 
-            name={field.name} 
-            value={formData[field.name]} 
-            onChange={handleChange} 
-          />
-        </label>
+        <FormField 
+          key={index}
+          label={field.label}
+          name={field.name}
+          type={field.type}
+          value={formData[field.name]}
+          onChange={handleChange}
+        />
       ))}
       <button type="submit">Save</button>
     </form>

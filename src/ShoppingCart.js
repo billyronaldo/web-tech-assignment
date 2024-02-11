@@ -4,7 +4,7 @@ import './ShoppingCartStyles.css';
 const ShoppingCart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  const handleQuantityChange = (item, quantity) => {
+  const onQtyChange = (item, quantity) => {
     updateQuantity(item, quantity);
   };
 
@@ -34,8 +34,10 @@ const ShoppingCart = ({ cart, removeFromCart, updateQuantity, clearCart }) => {
                 <p className="item-name">{item.name}</p>
                 <p className="item-price">${item.price}</p>
                 <div className="quantity-container">
-                  <label>Quantity:</label>
-                  <input type="number" value={item.quantity} onChange={(e) => handleQuantityChange(item, e.target.value)} />
+                  <span className="quantity-label">Quantity:</span>
+                  <button className="quantity-button" onClick={() => onQtyChange(item, Math.max(1, item.quantity - 1))}>-</button>
+                  <span>{item.quantity}</span>
+                  <button className="quantity-button" onClick={() => onQtyChange(item, item.quantity + 1)}>+</button>
                 </div>
                 <p className="total-price">Total Price: ${item.price * item.quantity}</p>
                 <button className="remove-button" onClick={() => removeFromCart(item)}>Remove</button>

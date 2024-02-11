@@ -8,17 +8,19 @@ import flower from './assets/pexels-teona-swift-6912905.jpg';
 
 import './ProductListStyles.css';
 
-const ProductList = ({ addToCart, setPage }) => {
+const ProductList = ({ addToCart, setPage, setSelectedProduct }) => {
   const products = [
-    { id: 1, name: 'Flower Bucket', price: 50, image: flower },
-    { id: 2, name: 'Rug', price: 15, image: rug },
-    { id: 3, name: 'Wallet', price: 20, image: wallet },
-    { id: 4, name: 'Airpod', price: 100, image: airpod },
-    { id: 5, name: 'Mouse', price: 10, image: mouse },
+    { id: 1, name: 'Flower Bucket', price: 50, image: flower, description: 'Beautiful bouquet of assorted flowers.' },
+    { id: 2, name: 'Rug', price: 15, image: rug, description: 'Soft and cozy rug for your living room.' },
+    { id: 3, name: 'Wallet', price: 20, image: wallet, description: 'Stylish leather wallet with multiple compartments.' },
+    { id: 4, name: 'Airpod', price: 100, image: airpod, description: 'Wireless earbuds with high-quality sound.' },
+    { id: 5, name: 'Mouse', price: 10, image: mouse, description: 'Ergonomic mouse for comfortable use.' },
   ];
+  
 
   const viewProductDetail = (product) => {
-    setPage('productDetail', product);
+    setPage('productDetail');
+    setSelectedProduct(product);
   };
 
   return (
