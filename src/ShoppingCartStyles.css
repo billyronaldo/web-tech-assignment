@@ -110,8 +110,27 @@
 }
 
 @media only screen and (max-width: 767px) {
+    .shopping-cart .cart-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
     .shopping-cart .cart-item img {
-        max-width: 100px;
-        margin-right: 10px;
+        max-width: 100%; 
+        height: auto;
+        margin-right: 0;
+        margin-bottom: 10px;
+    }
+    
+    .shopping-cart .item-details {
+        width: 100%;
+    }
+    
+    .shopping-cart .item-price {
+        margin-bottom: 10px;
+    }
+    
+    .shopping-cart .total-price {
+        font-size: 18px;
     }
 }
