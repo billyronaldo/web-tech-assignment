@@ -1,23 +1,18 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './ProductListStyles.css';
-import mouse from './assets/pexels-john-petalcurin-2115256.jpg';
-import rug from './assets/pexels-kelly-2950003.jpg';
-import wallet from './assets/pexels-lukas-915915.jpg';
-import airpod from './assets/pexels-dina-nasyrova-3825517.jpg';
-import flower from './assets/pexels-teona-swift-6912905.jpg';
-import dreamCatcher from './assets/pexels-pixabay-357501.jpg';
+import { getAllProducts, addToCart } from './apiConnections';
 
 import './ProductListStyles.css';
 
-const ProductList = ({ addToCart, setPage, setSelectedProduct }) => {
-  const products = [
-  { id: 1, name: 'Flower Bucket', price: 50, image: flower, description: 'Beautiful bouquet of assorted flowers.' },
-  { id: 2, name: 'Rug', price: 15, image: rug, description: 'Soft and cozy rug for your living room.' },
-  { id: 3, name: 'Wallet', price: 20, image: wallet, description: 'Stylish leather wallet with multiple compartments.' },
-  { id: 4, name: 'Airpod', price: 100, image: airpod, description: 'Wireless earbuds with high-quality sound.' },
-  { id: 5, name: 'Mouse', price: 10, image: mouse, description: 'Ergonomic mouse for comfortable use.' },
-  { id: 5, name: 'Dream Catcher', price: 17, image: dreamCatcher, description: 'Beautiful dream catcher to bring positive energy and peaceful dreams into your home.' },
-];
+const ProductList = ({ setPage, setSelectedProduct }) => {
+  const [products, setProducts] = useState([]);
+  const userId = '6614c3d1e9044ec38fc5e2f1'; // Hardcoded user ID
+
+  useEffect(() => {
+    getAllProducts()
+      .then(data => setProducts(data))
+      .catch(error => console.error('Error:', error));
+  }, []);
 
 
   const viewProductDetail = (product) => {
@@ -25,16 +20,25 @@ const ProductList = ({ addToCart, setPage, setSelectedProduct }) => {
     setSelectedProduct(product);
   };
 
+  const addCart = async (userId, productId, quantity) => {
+    try {
+      console.log(productId, quantity)
+      await addToCart(userId, productId, quantity);
+    } catch (error) {
+      console.error('Error adding product to cart:', error);
+    }
+  };
+
   return (
     <div>
       <h2>Products</h2>
       <div className="product-list">
         {products.map(product => (
-          <div key={product.id} className="product-item">
+          <div key={product._id} className="product-item">
             <img src={product.image} alt={product.name} />
             <h3>{product.name}</h3>
-            <p>${product.price}</p>
-            <button onClick={() => addToCart(product, 1)}>Add to Cart</button>
+            <p>${product.pricing}</p>
+            <button onClick={() => addCart(userId, product._id, 1)}>Add to Cart</button>
             <button onClick={() => viewProductDetail(product)}>View Details</button>
           </div>
         ))}

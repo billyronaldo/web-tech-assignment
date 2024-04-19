@@ -109,6 +109,7 @@
     text-align: center;
 }
 
+/* add responsiveness to adjust screen size */
 @media only screen and (max-width: 767px) {
     .shopping-cart .cart-item {
         flex-direction: column;
